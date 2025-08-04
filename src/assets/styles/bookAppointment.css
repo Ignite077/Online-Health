@@ -1,0 +1,311 @@
+body{
+    font-family: Arial, sans-serif;
+}
+.book-appointment-container {
+  display: flex;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  
+}
+/* hello */
+.content-wrapper{
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px;
+  gap: 40px;}
+.sidebar {
+  width: 250px;
+  transition: all 0.4s ease;
+  background-color: #f0faff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 100;
+  margin-top: 50px;
+}
+
+.sidebar h2 {
+  margin-bottom: 15px;
+}
+
+.sidebar label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.sidebar select,
+.sidebar input[type="checkbox"] {
+  margin-top: 6px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.doctor-list {
+  width: 75%;
+  padding-left: 20px;
+}
+
+.doctor-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 15px;
+  background-color: #f9f9f9;
+  width: 100%;
+  max-width: 1050px;
+  margin-left: 15px;
+}
+
+.doctor-card h3 {
+  margin-top: 0;
+}
+
+.doctor-card button {
+  margin: 10px auto 0 auto;
+  padding: 8px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.doctor-card button:hover {
+  background-color: #45a049;
+}
+.search-box {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* Overlay covers whole screen */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal centered in screen */
+.modal {
+  background: #ffffff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  max-width: 750px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+}
+
+/* Optional animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Form styling inside modal */
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal input,
+.modal textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+}
+
+.modal button {
+  background-color: #007a91;
+  color: white;
+  padding: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.modal button:hover {
+  background-color: #005d6c;
+}
+
+
+/* HIDDEN SIDEBAR */
+.sidebar.hide {
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  padding: 0;
+  border: none;
+}
+
+/* VISIBLE SIDEBAR */
+.sidebar.show {
+  transform: translateX(0);
+  opacity: 1;
+  width: 250px;
+  pointer-events: auto;
+}
+
+/* LAYOUT */
+.content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  transition: all 0.3s ease;
+}
+
+.doctor-list {
+  flex: 1;
+  padding: 20px;
+}
+
+/* FILTER ICON */
+.filter-icon {
+  position: fixed;
+  top: auto;
+  left: 20px;
+  background-color: #ffffff;
+  color: #007a91;
+  padding: 12px;
+  border-radius: 50%;
+  border: 2px solid #007a91;
+  cursor: pointer;
+  z-index: 99;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  display: flex;
+}
+
+.filter-icon:hover {
+  background-color: #007a91;
+  color: white;
+  transform: scale(1.1);
+}
+
+/* RESPONSIVE BEHAVIOR */
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
+
+  .sidebar.show {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    height: calc(100% - 70px);
+    background: #fff;
+    z-index: 1000;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .doctor-list {
+    padding: 10px;
+  }
+}
+.doctor-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+.pagination {
+  display: flex;
+  gap: 8px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination button {
+  background-color: #f1f1f1;
+  border: none;
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.pagination button:hover {
+  background-color: #009180;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.pagination button.active {
+  background-color: #1adad4;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 0 2px white, 0 0 0 4px #007a91;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination .dots {
+  padding: 10px;
+  font-size: 16px;
+  color: #999;
+}
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  white-space: nowrap;
+}
+.checkbox-row input[type="checkbox"] {
+  transform: scale(1.4); /* Optional: makes checkbox slightly larger */
+  margin: 0;
+  width: auto !important;
+  height: auto !important;
+  appearance: auto;
+  vertical-align: middle;
+}
+.checkbox-row label {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1; /* Keeps vertical alignment tight */
+  margin: 0;
+  padding: 0;
+}
